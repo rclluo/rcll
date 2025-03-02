@@ -1,5 +1,5 @@
 from numbers import Number
-from math import sqrt
+from math import sqrt, sin, cos
 
 class Vector2D:
     def __init__(self, x: Number, y: Number):
@@ -9,11 +9,15 @@ class Vector2D:
         self.y=y
     
     @classmethod
-    def from_packed(cls,i):
+    def from_packed_coords(cls, i):
         assert hasattr(i,"__getitem__")
         assert len(i)==2
         return cls(i[0],i[1])
-
+    
+    @classmethod
+    def from_polar(cls, r, theta):        
+        return cls(r*cos(theta),r*sin(theta))
+    
     def swap(self):
         z=self.x
         self.x=self.y
