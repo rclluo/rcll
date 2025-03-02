@@ -1,5 +1,6 @@
 from numbers import Number
 from math import sqrt, sin, cos
+from infix import Infix
 
 class Vector2D:
     def __init__(self, x: Number, y: Number):
@@ -63,3 +64,8 @@ class Vector2D:
             return self.x==other[0] and self.y==other[1]
         else:
             return False
+        
+def dot_product(a: Vector2D, b: Vector2D):
+    return a.x*b.x+a.y*b.y
+
+dot=Infix(dot_product)
