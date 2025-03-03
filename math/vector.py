@@ -27,6 +27,9 @@ class Vector2D:
     def magnitude(self):
         return sqrt(self.x**2+self.y**2)
 
+    def unit(self):
+        return self/self.magnitude()
+
     def __getitem__(self, key):
         assert key==0 or key==1
         if key==0:
@@ -50,6 +53,12 @@ class Vector2D:
     
     def __rmul__(self, other):
         return self*other
+
+    def __truediv__(self, other):
+        if isinstance(other, Number):
+            return self*(1/other)
+        else:
+            raise TypeError
     
     def __add__(self, other):
         assert isinstance(other, Vector2D)
