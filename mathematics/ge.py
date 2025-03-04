@@ -37,3 +37,6 @@ class Line():
     def __sub__(self, other):
         other=Vector2D(other)
         self.a-=other
+
+    def __str__(self):
+        return str({"point":self.a,"slope":self.b})
