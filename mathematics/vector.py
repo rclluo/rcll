@@ -19,6 +19,11 @@ class Vector2D:
     def from_polar(cls, r, theta):        
         return cls(r*cos(theta),r*sin(theta))
     
+    def from_packed_polar(cls, i):
+        assert hasattr(i,"__getitem__")
+        assert len(i)==2
+        return cls.from_polar(i[0],i[1])
+    
     def swap(self):
         z=self.x
         self.x=self.y
