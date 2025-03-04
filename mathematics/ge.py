@@ -16,7 +16,12 @@ class Line():
         else:
             raise TypeError("B must be a number")
 
-    def 
+    @classmethod
+    def from_two_points(cls, a: Vector2D, b: Vector2D):    
+        a=Vector2D(a)
+        b=Vector2D(b)
+        diff=b-a
+        return cls(a,diff.y/diff.x)
 
     def distance(self, p: Vector2D):
         return (a*(self.a.x-p.x)+(self.a.y-p.y))/sqrt(m**2+1)
