@@ -16,6 +16,8 @@ class Line():
         else:
             raise TypeError("B must be a number")
 
+    def 
+
     def distance(self, p: Vector2D):
         return (a*(self.a.x-p.x)+(self.a.y-p.y))/sqrt(m**2+1)
 
