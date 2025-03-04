@@ -21,3 +21,11 @@ class Line():
 
     def __contains__(self, p: Vector2D):
         return self.a*p.x+self.b==p.y
+
+    def __add__(self, other):
+        other=Vector2D(other)
+        self.a+=other
+    
+    def __sub__(self, other):
+        other=Vector2D(other)
+        self.a-=other
