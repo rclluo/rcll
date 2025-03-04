@@ -20,7 +20,8 @@ class Line():
         return (a*(self.a.x-p.x)+(self.a.y-p.y))/sqrt(m**2+1)
 
     def __contains__(self, p: Vector2D):
-        return self.a*p.x+self.b==p.y
+        diff=p-self.a
+        return (diff.y/diff.x)==p.y
 
     def __add__(self, other):
         other=Vector2D(other)
