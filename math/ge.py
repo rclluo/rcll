@@ -17,7 +17,7 @@ class Line():
             raise TypeError("B must be a number")
 
     def distance(self, p: Vector2D):
-        return (a*(self.a.x-p.x)+(self.a.y-p.y)))/sqrt(m**2+1)
+        return (a*(self.a.x-p.x)+(self.a.y-p.y))/sqrt(m**2+1)
 
     def __contains__(self, p: Vector2D):
         return self.a*p.x+self.b==p.y
