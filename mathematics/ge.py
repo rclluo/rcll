@@ -10,7 +10,7 @@ class Line():
         """
         y=ax+b
         """
-        self.a: Vector2D=a
+        self.a: Vector2D=Vector2D(a)
         if isinstance(b, Number):
             self.b=b
         else:
