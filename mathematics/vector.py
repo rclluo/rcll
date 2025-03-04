@@ -18,7 +18,8 @@ class Vector2D:
     @classmethod
     def from_polar(cls, r, theta):        
         return cls(r*cos(theta),r*sin(theta))
-    
+
+    @classmethod
     def from_packed_polar(cls, i):
         assert hasattr(i,"__getitem__")
         assert len(i)==2
