@@ -40,5 +40,3 @@ class Line():
 
     def __str__(self):
         return str({"slope":self.a,"y-intercept":self.b})
-
-print(Line(1,2))
