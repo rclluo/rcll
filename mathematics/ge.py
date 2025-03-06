@@ -1,42 +1,44 @@
 from numbers import Number
-from .vector import Vector2D
+from vector import Vector2D
 from math import sqrt
 
 class Line():
     """
     A line in 2D space.
     """
-    def __init__(self, a: Vector2D, b) -> None:
+    def __init__(self, a, b) -> None:
         """
         y=ax+b
+        a is slope, b is y-intercept
         """
-        self.a: Vector2D=Vector2D.from_packed_coords(a)
-        if isinstance(b, Number):
+        if isinstance(a, Number) and isinstance(b, Number):
+            self.a=a
             self.b=b
         else:
-            raise TypeError("B must be a number")
+            raise TypeError("A and B must be numbers.")
+
+    @classmethod
+    def from_point_slope(cls, a: Vector2D, b):
+        return cls(b, a.y-b*(a.x))
 
     @classmethod
     def from_two_points(cls, a: Vector2D, b: Vector2D):    
         a=Vector2D.from_packed_coords(a)
         b=Vector2D.from_packed_coords(b)
         diff=b-a
-        return cls(a,diff.y/diff.x)
+        return cls.from_point_slope(a,diff.y/diff.x)
 
     def distance(self, p: Vector2D):
-        return (self.a*(self.a.x-p.x)+(self.a.y-p.y))/sqrt(self.b**2+1)
+        """
+        y=ax+b
+        ax-y+b=0
+        """
+        return (self.a*p.x-p.y+self.b)/(sqrt(self.a**2+1))
 
     def __contains__(self, p: Vector2D):
-        diff=p-self.a
-        return (diff.y/diff.x)==p.y
-
-    def __add__(self, other):
-        other=Vector2D(other)
-        self.a+=other
-    
-    def __sub__(self, other):
-        other=Vector2D(other)
-        self.a-=other
+        return p.y==self.a*p.x+self.b
 
     def __str__(self):
-        return str({"point":self.a,"slope":self.b})
+        return str({"slope":self.a,"y-intercept":self.b})
+
+print(Line(1,2))

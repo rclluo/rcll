@@ -1,6 +1,6 @@
 from numbers import Number
 from math import sqrt, sin, cos
-from .infix import Infix
+from infix import Infix
 
 class Vector2D:
     def __init__(self, x: Number, y: Number):
